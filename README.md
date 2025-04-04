@@ -25,16 +25,20 @@ This project contains a recommendation system built with FastAPI and a frontend 
 
 ## Evaluating the Recommendation System
 
-### Option 1: Using the Frontend
+### Option 1: Using the Web Interface (Recommended)
 
-1. Start the backend server as described above
-2. Open the frontend in your browser
-3. Use the interface to:
-   - Create test customers
-   - View recommendations for each customer
-   - Add browsing history to see how recommendations change
+Run the web evaluator interface:
+```
+python src/web_evaluator.py
+```
 
-### Option 2: Run the Evaluation Script
+This will:
+1. Start a web server on http://127.0.0.1:8080
+2. Open this URL in your browser
+3. Click the "Run Evaluation" button to run the evaluation
+4. View the results directly in your browser
+
+### Option 2: Using the Command Line
 
 Run the evaluation script to get a detailed report of the recommendation system's performance:
 
