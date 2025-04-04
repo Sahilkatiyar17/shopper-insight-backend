@@ -3,6 +3,7 @@ import subprocess
 import time
 import sys
 import os
+import json
 
 def run_server():
     """Start the FastAPI server as a subprocess"""
@@ -29,6 +30,12 @@ def run_evaluation():
     
     return result.stdout
 
+def save_results_to_file(output):
+    """Save the evaluation results to a file"""
+    with open("recommendation_results.txt", "w") as f:
+        f.write(output)
+    print(f"\nResults saved to recommendation_results.txt")
+
 def main():
     """Main function to run the server and evaluation"""
     # Check if we're in the right directory
@@ -49,11 +56,16 @@ def main():
         print("="*80 + "\n")
         print(evaluation_output)
         
+        # Save results to file for easier access
+        save_results_to_file(evaluation_output)
+        
     finally:
         # Clean up: terminate the server
         print("\nShutting down server...")
         server.terminate()
         server.wait()
+        print("Server shutdown complete.")
+        print("\nTo run this evaluation again, use: python src/run_evaluation.py")
 
 if __name__ == "__main__":
     main()
