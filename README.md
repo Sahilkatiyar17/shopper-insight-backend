@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
 
-## Project info
+# Recommendation System Evaluator
 
-**URL**: https://lovable.dev/projects/440a7717-9be1-4601-add0-d92d51df38e4
+This project contains a recommendation system built with FastAPI and a frontend interface to test and visualize the recommendations.
 
-## How can I edit this code?
+## Setup Instructions
 
-There are several ways of editing your application.
+1. Install the required packages:
+   ```
+   pip install -r src/requirements.txt
+   ```
 
-**Use Lovable**
+2. Start the backend server:
+   ```
+   python src/main.py
+   ```
+   This will start the FastAPI server on http://127.0.0.1:8000
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/440a7717-9be1-4601-add0-d92d51df38e4) and start prompting.
+3. In a separate terminal, you can run the frontend:
+   ```
+   npm install
+   npm run dev
+   ```
+   This will start the React frontend on http://localhost:3000 or another available port.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Evaluating the Recommendation System
 
-**Use your preferred IDE**
+### Option 1: Using the Frontend
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Start the backend server as described above
+2. Open the frontend in your browser
+3. Use the interface to:
+   - Create test customers
+   - View recommendations for each customer
+   - Add browsing history to see how recommendations change
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Option 2: Run the Evaluation Script
 
-Follow these steps:
+Run the evaluation script to get a detailed report of the recommendation system's performance:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+python src/run_evaluation.py
 ```
 
-**Edit a file directly in GitHub**
+This script will:
+1. Start the server automatically
+2. Run the evaluation tests
+3. Display the results including accuracy metrics
+4. Stop the server when done
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Option 3: Manual Evaluation
 
-**Use GitHub Codespaces**
+You can also run the evaluation steps manually:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Start the server: `python src/main.py`
+2. In a separate terminal, run: `python src/evaluate_recommendations.py`
 
-## What technologies are used for this project?
+## Interpreting Results
 
-This project is built with:
+The evaluation results include:
+- Relevance scores for each customer profile (tech enthusiast, fitness enthusiast, fashion enthusiast)
+- Overall system performance rating
+- Recommendations for each customer with confidence scores
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/440a7717-9be1-4601-add0-d92d51df38e4) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+A relevance score above 80% is considered EXCELLENT, 60-80% is GOOD, 40-60% is FAIR, and below 40% is POOR.
